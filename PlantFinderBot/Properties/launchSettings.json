@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PlantFinderBot": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "BOT_TOKEN": "7796960870:AAFo81Z-VFQk7-VyDCVjZZNagVqOy_ecllE"
+      }
+    }
+  }
+}
