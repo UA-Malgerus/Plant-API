@@ -22,7 +22,7 @@ public class PlantNetClient(HttpClient httpClient, WikiClient wikiClient)
         var body = await resp.Content.ReadAsStringAsync();
 
         var pn = JsonConvert.DeserializeObject<PlantNetResponse>(body);
-        var best = pn?.Results.OrderByDescending(r => r.Score).FirstOrDefault();
+        var best = pn?.Results?.OrderByDescending(r => r.Score).FirstOrDefault();
         if (best is null) return null!;
 
         var sci = best.Species.ScientificNameWithoutAuthor;
@@ -58,7 +58,7 @@ public class PlantNetClient(HttpClient httpClient, WikiClient wikiClient)
         var body = await resp.Content.ReadAsStringAsync();
 
         var pn = JsonConvert.DeserializeObject<PlantNetResponse>(body);
-        var ordered = pn?.Results.OrderByDescending(r => r.Score).Take(maxResults).ToList() ??
+        var ordered = pn?.Results?.OrderByDescending(r => r.Score).Take(maxResults).ToList() ??
                       new List<PlantNetResult>();
         if (!ordered.Any()) return new List<PlantInfo>();
 

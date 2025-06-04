@@ -47,11 +47,11 @@ public class PlantHealthAnalyzer
             var response = await _geminiModel.GenerateContent(parts);
 
             string? resultText = null;
-            if (!string.IsNullOrEmpty(response.Text))
+            if (!string.IsNullOrEmpty(response?.Text))
                 resultText = response.Text.TrimEnd();
-            else if (response.Candidates != null && response.Candidates.Any())
+            else if (response?.Candidates != null && response.Candidates.Any())
                 resultText = response.Candidates.FirstOrDefault()?
-                    .Content?.Parts.FirstOrDefault()?
+                    .Content?.Parts?.FirstOrDefault()?
                     .Text.TrimEnd();
 
             if (string.IsNullOrEmpty(resultText))
