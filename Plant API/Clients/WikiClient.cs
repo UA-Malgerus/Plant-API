@@ -16,7 +16,7 @@ public class WikiClient(HttpClient httpClient)
         var body = await resp.Content.ReadAsStringAsync();
         var wiki = JsonConvert.DeserializeObject<WikiResponse>(body);
         string descUpper;
-        if (wiki?.Description is null || wiki?.Description.Length == 0)
+        if (wiki?.Description is null || wiki.Description.Length == 0)
         {
             descUpper = string.Empty;
         }

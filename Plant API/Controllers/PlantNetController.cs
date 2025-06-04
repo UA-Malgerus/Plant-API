@@ -26,7 +26,7 @@ public class PlantNetController(PlantNetClient plantNetClient, PlantDB db) : Con
         if (info == null || string.IsNullOrWhiteSpace(info.Plant))
             return BadRequest("Не вдалося знайти рослину за фото.");
 
-        await db.AddSearchHistoryAsync(info.Plant, userId);
+        await db.AddSearchHistoryAsync(info.Plant, userId); 
         await db.CropSearchHistoryAsync(userId);
 
         return Ok(info);
@@ -56,6 +56,6 @@ public class PlantNetController(PlantNetClient plantNetClient, PlantDB db) : Con
         foreach (var info in results) await db.AddSearchHistoryAsync(info.Plant, userId);
         await db.CropSearchHistoryAsync(userId);
 
-        return Ok(results); // JSON-масив PlantInfo
+        return Ok(results); 
     }
 }
