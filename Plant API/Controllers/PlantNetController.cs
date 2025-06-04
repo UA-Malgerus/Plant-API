@@ -10,7 +10,7 @@ namespace Plant_API.Controllers;
 public class PlantNetController(PlantNetClient plantNetClient, PlantDB db) : ControllerBase
 {
     [HttpPost("identify")]
-    public async Task<IActionResult> Identify(IFormFile image, [FromHeader(Name = "UserId")] string? userId,
+    public async Task<IActionResult> Identify(IFormFile? image, [FromHeader(Name = "UserId")] string? userId,
         [FromQuery] Language lang = Language.uk)
     {
         if (image == null || image.Length == 0)
